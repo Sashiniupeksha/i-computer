@@ -1,0 +1,50 @@
+import mongoose from "mongoose";
+
+const userschema = new mongoose.Schema(
+    {
+        email :{
+            type: String,
+            required: true,
+            Unique : true
+        },
+
+        firstname : {
+            type: String,
+            required:true
+        },
+        
+        lastName : {
+            type : String,
+            required : true
+        },
+        password :{ 
+            type : String,
+            required : true
+        },
+        role : {
+            type: String,
+            default: "customer"
+        },
+        isBlocked : {
+            type : Boolean,
+            default : false
+        },
+
+        isEmailVerified :{
+            type : Boolean,
+            default : false
+
+
+        },
+
+        image : {
+            type: String,
+            required: true,
+            default:"/default.jpg"
+        }
+       
+    }
+)
+
+const User = mongoose.model("User", userschema)
+export default User;
