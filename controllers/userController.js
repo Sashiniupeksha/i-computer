@@ -47,13 +47,14 @@ export function loginUser (req, res){
                         isEmailverified : user.isEmailVerified,
                         image : user.image
                     };
-                    const token = jwt.sign(payload,"secretkey96$2025",{
+                    const token = jwt.sign(payload, process.env.JWT_SECRET,{
                         expiresIn : "48h"
                     })
 
                    res.json({
                 message:"Login Successfull",
-                token : token
+                token : token,
+                role: user.role,
                 
                 });
             }else{
